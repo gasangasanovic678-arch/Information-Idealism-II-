@@ -1,0 +1,923 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage{amsthm}
+\usepackage{geometry}
+\usepackage{enumitem}
+\usepackage{setspace}
+\usepackage{parskip}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{microtype}
+\usepackage{hyperref}
+
+\geometry{margin=2.5cm}
+\onehalfspacing
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{claim}{Claim}[section]
+\newtheorem{thesis}{Thesis}[section]
+\newtheorem{proposition}{Proposition}[section]
+
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}[section]
+\newtheorem{objection}{Objection}[section]
+\newtheorem{example}{Example}[section]
+
+\title{\textbf{Information Idealism}\\[0.3em]
+\large An Informational, Axiologically Neutral, and Domain-Absolutely
+Independent Ontology of Eidos}
+\author{Gasan Bagirov}
+\date{September 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\noindent
+This document formalizes a reinterpretation of Plato's theory of Forms
+(eidos). On this view, an \emph{Idea} is not a living being, not a moral
+entity, and not a construct of human consciousness. It is
+\emph{information}: an objective, eternal, immutable, and aseitic
+structure. Truth, falsehood, good, and evil are not properties of Ideas
+themselves but \emph{human markers} applied to our cognitive relation
+with them. The position preserves the realist core of Platonism while
+discarding its vitalistic and moralistic commitments; we call it
+\textbf{Information Idealism}. The formal core is a category-theoretic
+account of structures, their invariance, and the adequacy of
+representations, supplemented by an explicit theory of
+misrepresentation as failure of injectivity on blocks. Two features of
+the position deserve emphasis at the outset. First, the independence
+claimed for Ideas is \emph{domain-absolute}: it excludes dependence on
+any mind, but not dependence on the constitutive transformations of a
+domain (Definition~\ref{def:domain-abs}). Second, the theory of
+normative markers is \emph{constructivist} in the sense of
+Sellars~\cite{Sellars1956} and Brandom~\cite{Brandom1994}: the
+normative force of ``true'' and ``good'' is located in the pragmatic
+commitments of agents, not derived from the ontology of structures. The
+position is programmatic: several transitions are argued
+heuristically, and this is flagged where it occurs. A worked example
+(\S\ref{sec:example}) and a section of open problems
+(\S\ref{sec:limitations}) are included to make the position
+assessable.
+\end{abstract}
+
+\section{Introduction}
+
+Classical Platonism holds that the eidos is:
+\begin{itemize}[nosep]
+  \item eternal and unchanging,
+  \item the source of being and knowledge,
+  \item subordinate to the Idea of the Good,
+  \item accessible to the soul through recollection.
+\end{itemize}
+
+Information Idealism preserves the \emph{ontological realism} of
+Platonism but rejects its \emph{axiological and vitalistic
+commitments}. The result is a threefold thesis:
+\begin{enumerate}[label=(\roman*),nosep]
+  \item \textbf{Informationalism:} an Idea is information, not a living
+        substance.
+  \item \textbf{Axiological Neutrality:} an Idea is neither good nor
+        evil, neither true nor false in itself.
+  \item \textbf{Domain-Absolute Independence:} an Idea does not depend
+        on any mind, human or divine; it may, however, depend on the
+        constitutive transformations of its domain.
+\end{enumerate}
+
+The three theses are logically independent: one may accept any subset
+and reject the rest. Their conjunction, however, yields a distinctive
+ontology whose consequences are worked out below. The document is a
+sketch, not a closed system: where a transition is heuristic rather
+than deductive, this is flagged.
+
+Three terminological clarifications are in order at the outset, because
+they will do substantial work later. First, the terms \emph{eternal},
+\emph{immutable}, and \emph{aseitic} (self-existent, dependent on
+nothing) are not synonyms: a structure may be immutable without being
+eternal (a timeless abstractum that nonetheless depends on a divine
+decree), and eternal without being aseitic (an everlasting emanation).
+Second, the distinction between \emph{description} and
+\emph{structure} is not the distinction between a linguistic item and a
+non-linguistic one; it is the distinction between an arbitrary
+partition of a state-space and a partition that is invariant under the
+admissible transformations of that space. Third, the word
+\emph{information} is used here in a structural sense, not in the
+Shannon sense; the two are distinguished in
+Definition~\ref{def:structure} and Remark~\ref{rem:shannon}. All three
+distinctions are made precise in \S2.
+
+\section{Fundamental Definitions}
+
+\begin{definition}[Structure and Information]\label{def:structure}
+Let $S$ be a space of possible states, and let $G$ be a groupoid of
+\emph{admissible transformations} of $S$
+(Definition~\ref{def:admissible}). A \emph{structure} on $S$ is a
+partition $\Pi = \{B_1, B_2, \dots\}$ of $S$ into disjoint blocks
+whose union is $S$.
+
+A structure $\Pi$ is \emph{$G$-invariant} if for every $g \in G$ and
+every block $B \in \Pi$, the image $g(B)$ is contained in a block of
+$\Pi$, i.e.\ there is $B' \in \Pi$ with $g(B) \subseteq B'$. When $g$
+is invertible on $S$ (as it is for group-valued symmetries), containment
+strengthens to equality $g(B) = B'$. Two structures $\Pi, \Pi'$ are
+\emph{$G$-equivalent} if they induce the same partition modulo the
+action of $G$.
+
+\textbf{Structural information} is a $G$-equivalence class of
+$G$-invariant structures: the pattern of distinctions that survives all
+admissible transformations of the state-space. A structure that is not
+$G$-invariant is a \emph{description}, not structural information. The
+\emph{informational content} of a structure is the pattern of
+distinctions it imposes, modulo the identifications forced by $G$.
+
+Three levels must be distinguished:
+\begin{enumerate}[label=(\alph*),nosep]
+  \item the \textbf{structure} itself --- the pattern of distinctions;
+  \item its \textbf{carrier} --- a physical, neural, or symbolic medium;
+  \item its \textbf{representation} --- a cognitive or linguistic
+        encoding.
+\end{enumerate}
+A structure is \emph{not identical} to any one of its carriers or
+representations. The information-theoretic Idea is a structure in sense
+(a), and only in sense (a). The invariance condition is what
+distinguishes structural information from a merely stipulated
+partition: a partition that no admissible transformation preserves
+carries no structural information about the system it partitions.
+\end{definition}
+
+\begin{remark}[Structural vs.\ Shannon information]\label{rem:shannon}
+The term \emph{information} in this paper denotes
+\emph{structural} information: a $G$-equivalence class of invariant
+partitions, i.e.\ a pattern of distinctions robust under the admissible
+transformations of a domain. It is \emph{not} Shannon information,
+which is a measure of uncertainty reduction on a probability space and
+is relative to a distribution over messages. The two notions are
+compatible --- a Shannon channel can transmit a structural partition
+--- but they answer different questions. Shannon information is
+quantitative and probabilistic; structural information is qualitative
+and invariance-theoretic. The choice of the structural notion is
+deliberate: it is the notion that supports identity, embodiment,
+representation, and misrepresentation, which are the notions the
+ontology requires. For the Shannon notion and its scope, see
+Cover and Thomas~\cite{CoverThomas2006}.
+\end{remark}
+
+\begin{definition}[Structural Identity, Embodiment, Representation]
+\label{def:identity}
+Two structures $\Pi$ and $\Pi'$ on $S$ are \emph{identical} if and only
+if they induce the same partition: for every $s \in S$ and every block
+$B \in \Pi$, there is a block $B' \in \Pi'$ with $s \in B
+\Leftrightarrow s \in B'$. They are \emph{distinct} otherwise.
+
+A structure $\Pi$ is \emph{embodied} in a carrier $C$ when there is a
+map $f : C \to S$ such that, for every block $B \in \Pi$, the preimage
+$f^{-1}(B)$ is a determinate subset of $C$. When $f$ is injective on
+the relevant distinctions, the embodiment is \emph{faithful}.
+
+A \emph{representation} of $\Pi$ is a pair $(R, g)$ where $g : S \to R$
+is constant on each block of $\Pi$. Such a $g$ is a
+\emph{homomorphism} from $\Pi$ onto the partition of $R$ induced by its
+image. The representation is \emph{adequate} when $g$ is injective on
+blocks, and \emph{coarsening} when distinct blocks may be identified.
+Identity of structures is thus independent of the identity of their
+carriers or representations.
+
+Finally, a representation $(R, g)$ is \emph{misrepresenting} $\Pi$ when
+there exist $s, s' \in S$ in distinct blocks of $\Pi$ with
+$g(s) = g(s')$. This is the formal locus of error.
+\end{definition}
+
+\begin{definition}[Admissible Transformations]\label{def:admissible}
+The groupoid $G$ of admissible transformations of $S$ is not chosen by
+the observer. It is fixed by the domain: for a physical system, by its
+symmetries (permutations of indistinguishable particles, changes of
+inertial frame, gauge transformations); for a mathematical object, by
+the equivalences internal to its category of presentation; for an
+agent's practical domain, by the transformations that preserve the
+conditions of agency (\S\ref{sec:good}). The choice of $G$
+is a theoretical matter internal to the domain, not a psychological
+matter. Objectivity is thus \emph{domain-relative without being
+mind-relative}.
+
+The phrase ``fixed by the domain'' is to be read as follows: for a
+given domain, the admissible transformations are the morphisms of the
+category in which that domain is presented. The choice of the category
+is itself a theoretical choice, revisable in the light of the domain's
+own demands; but it is not a choice made \emph{by} an observer
+\emph{for} an observer. This is the sense in which Dummett's
+distinction between realism and anti-realism about a domain turns on
+what the domain itself requires, not on our epistemic convenience
+\cite{Dummett1978}. See also Shapiro~\cite{Shapiro1997} for the
+mathematical case.
+\end{definition}
+
+\begin{definition}[Information-Theoretic Idea]\label{def:idea}
+An \textbf{Idea} (or \emph{information-theoretic eidos}) is a
+structural information class in the sense of
+Definition~\ref{def:structure} that is objective (invariant under the
+admissible transformations of its domain), eternal, immutable, and
+aseitic.
+\end{definition}
+
+\begin{definition}[Eternity, Immutability, Aseity]\label{def:modal}
+A structure is \emph{eternal} if it is not located in time: there is no
+time at which it begins or ceases to exist.
+
+A structure is \emph{immutable} if no admissible transformation of its
+state-space alters its partition. For a $G$-invariant structure this
+condition is met by construction; immutability is therefore not an
+independent modal predicate but a restatement of invariance. It is
+retained here to mark what is \emph{excluded}: dependence on temporal
+change.
+
+A structure is \emph{aseitic} if neither its existence nor its identity
+is caused, sustained, or constituted by any entity distinct from it.
+Aseity is relative to a \emph{domain}: the structure's identity
+conditions are exhausted by the domain-internal criteria of identity
+(Definition~\ref{def:domain-abs}).
+\end{definition}
+
+\begin{definition}[Human Marker]\label{def:marker}
+A \textbf{human marker} is a predicate --- such as \emph{true},
+\emph{false}, \emph{good}, or \emph{evil} --- that a cognitive agent
+applies to its \emph{relation} with an Idea. A marker is not an
+intrinsic property of the Idea, and its application does not alter the
+Idea.
+\end{definition}
+
+\begin{definition}[Marking and Pragmatic Commitment]\label{def:marking}
+\textbf{Marking} is the act by which an agent applies a human marker to
+its relation with an Idea. A marking is a \emph{pragmatic commitment}
+when the agent's performance of the act of marking carries practical
+entailments: to mark a representation as ``true'' is to undertake to
+revise it should adequacy fail; to mark an action as ``good'' is to
+undertake to promote the structures that condition one's agency. These
+commitments are not derived from the Idea, nor from the marker alone.
+They are \emph{posited} as constitutive of rational engagement with a
+structured relation, in the tradition of Sellars~\cite{Sellars1956} and
+Brandom~\cite{Brandom1994}; the position does not claim to deduce them
+from the ontology of structures. This is a \emph{constructivist}
+commitment, and it is a substantive metaethical position, not a
+neutral one. It is logically independent of the three theses
+(i)--(iii): one may accept them and reject the constructivism, or
+accept the constructivism on other ontological grounds.
+\end{definition}
+
+\begin{definition}[Domain-Absolute Independence]\label{def:domain-abs}
+An entity is \textbf{domain-absolutely independent} if neither its
+existence nor its identity depends on any mind, subject, language,
+culture, or divine act. Domain-absolute independence is the conjunction
+of \emph{aseity} (Definition~\ref{def:modal}) with \emph{objectivity}
+in the sense of Definition~\ref{def:admissible}.
+
+Independence is \emph{absolute with respect to minds}, but
+\emph{internal to a domain}: the admissible transformations that fix a
+structure's identity are those of its domain, not those of an observer.
+Whether the domain itself is further grounded --- in sets, categories,
+or something else --- is left open. This means that aseity, in the
+sense employed here, is relative to the domain: the position claims
+independence from minds, not independence from every possible ground.
+The stronger claim, that Ideas depend on \emph{nothing whatever}, is
+not made and is not required by the three theses. The distinction
+between the weaker and the stronger claim is the distinction between
+\emph{domain-absolute} and \emph{absolutely absolute} independence;
+only the former is asserted.
+\end{definition}
+
+\begin{remark}[Why the domain is not a hidden mind]
+\label{rem:domain-not-mind}
+A natural worry: if aseity is relative to a domain, and the domain is
+fixed by ``theoretical choice'', is the domain not simply a disguised
+form of mind-dependence? The reply turns on what fixes the domain.
+A domain is fixed by its \emph{constitutive transformations} --- the
+morphisms of the category in which it is presented. For the domain of
+physical symmetries, these are the Poincaré group, gauge groups, and
+permutation groups; for the domain of a mathematical structure, the
+automorphism group of the structure; for the domain of agency, the
+transformations that preserve the conditions of agency. In each case,
+the transformations are \emph{discovered} in the domain, not
+\emph{invented} by the theorist. The theorist chooses a
+\emph{presentation} of the domain; the domain fixes which
+presentations are adequate. This is the same distinction Dummett draws
+between a domain's own standards of correctness and our epistemic
+access to them \cite{Dummett1978}, and it is the distinction
+Shapiro~\cite{Shapiro1997} draws between a structure and its
+presentations. The domain is therefore not a hidden mind: it is the
+locus of the constitutive transformations, and those transformations
+are the domain's, not ours.
+\end{remark}
+
+\begin{remark}
+The formal apparatus of Definitions~\ref{def:structure}--\ref{def:admissible}
+is deliberately minimal. A partition is the weakest structure that
+supports the notions of identity, embodiment, representation, and
+misrepresentation; richer structures (orderings, algebras, categories)
+can be recovered as partitions with additional constraints. The point
+is not to reduce Ideas to set theory, but to make ``structural
+determination'' precise enough to bear the arguments that follow.
+\end{remark}
+
+\section{The Three Theses}
+
+\begin{claim}[Informationalism]
+Ideas are information, not living beings.
+\end{claim}
+
+Consider the number $\pi$. It is eternal, immutable, and objective. It
+does not grow, feel, desire, or act. It is not alive. Yet it is not
+nothing: it is a determinate structure of distinctions --- a specific
+position in the space of possible mathematical objects. The same
+analysis applies to non-mathematical cases. The structure ``being a
+cause'' is a determinate pattern of dependence among events; it does
+not act, desire, or feel. The structure ``being a just procedure'' is
+a determinate pattern of constraints on the distribution of burdens
+and benefits --- constraints stated purely relationally, without appeal
+to any evaluative primitive such as desert. It does not itself act
+justly or unjustly. In each case, what we grasp is a structure, not a
+living substance. By analogy with $\pi$, every Idea is of the same
+ontological kind. Hence an Idea is information, not a living
+substance.
+
+\begin{remark}[The analogy, made precise]
+The analogy with $\pi$ is not merely rhetorical. $\pi$ is a position
+in the structure of the real numbers, and the real numbers form a
+structure whose admissible transformations are the field automorphisms
+fixing $\mathbb{Q}$. $\pi$ is invariant under these: any field
+automorphism of $\mathbb{R}$ fixing $\mathbb{Q}$ fixes $\pi$, since
+$\pi$ is definable from rationals by a first-order formula. The
+analogy with Ideas is therefore an instance of the general
+invariance criterion of Definition~\ref{def:structure}: an Idea is a
+position in a structure that is invariant under the structure's
+admissible transformations. What distinguishes an Idea from an
+arbitrary mathematical object is not the kind of invariance but the
+modal profile (eternal, immutable, aseitic).
+\end{remark}
+
+\begin{claim}[Axiological Neutrality]
+Ideas are neutral with respect to truth, falsehood, good, and evil.
+\end{claim}
+
+Truth and falsehood are properties of propositions --- that is, of
+human judgments \emph{about} an Idea. Good and evil are properties of
+human attitudes and actions. An Idea, being neither a proposition nor
+an action, cannot bear these predicates intrinsically.
+
+``Neutrality'' here means the \emph{absence} of an axiological
+predicate, not a predicate with a neutral value. An Idea is not
+``neither good nor evil'' in the way a lukewarm action is; rather, the
+question of good and evil does not arise for an Idea at all.
+
+\begin{claim}[Domain-Absolute Independence]
+Ideas are domain-absolutely independent of all minds.
+\end{claim}
+
+The argument proceeds in three steps, corresponding to the three
+distinctions introduced in Definition~\ref{def:modal}.
+
+\emph{First (immutability).} By Definition~\ref{def:identity}, the
+identity of a structure is fixed by its partition of the space of
+possible states, not by any mind's grasp of that partition. Two minds
+may grasp the same structure, or fail to grasp it, without altering the
+partition. Hence the identity of an Idea does not depend on any mind.
+This establishes independence of \emph{identity} from minds.
+
+\emph{Second (eternity).} An Idea is by definition not located in time.
+A mind that created or sustained an Idea would have to stand in a
+temporal relation to it --- a before and an after. Since an Idea admits
+no such relation, no mind can create or sustain it. This establishes
+independence of \emph{existence} from temporal modes of dependence.
+
+\emph{Third (aseity).} It remains to exclude non-temporal modes of
+dependence, such as the dependence of a thought on a thinker or of a
+proposition on a language. Here the argument is structural: the
+identity of a structure is fixed by its partition relative to the
+admissible transformations of its domain
+(Definition~\ref{def:admissible}). No appeal to a mind, a language, or
+a divine act enters into this fixing. This is not a thesis about the
+nature of sets; it is a thesis about the \emph{domain-internal}
+criteria of identity. A structure is aseitic in the relevant sense
+when its identity conditions are exhausted by these domain-internal
+criteria. A mind may \emph{entertain} an Idea, but entertaining is a
+relation to a structure whose identity is already fixed; the relation
+is external to the relatum. This establishes independence of
+\emph{existence} from non-temporal modes of dependence on minds.
+
+The third step is the one most likely to be challenged, and it is
+worth stating the challenge precisely. The challenge is that
+``domain-internal criteria of identity'' are themselves
+mind-dependent, because the domain is a theoretical construction. The
+reply is the one given in Remark~\ref{rem:domain-not-mind}: the domain
+is fixed by its constitutive transformations, and those
+transformations are discovered in the domain, not invented by the
+theorist. The theorist's contribution is the \emph{presentation}, not
+the \emph{structure}. This is a substantive claim, and it is the
+central claim of the paper; it is defended, not assumed, but it is
+also not deduced from the definitions alone. The position is
+therefore conditional on the correctness of this claim, and this is
+flagged as an open problem in \S\ref{sec:limitations}.
+
+From the independence of identity and the independence of existence
+from minds, it follows that Ideas are domain-absolutely independent in
+the sense of Definition~\ref{def:domain-abs}.
+
+\begin{remark}
+The three steps are not redundant. A critic who accepts the first but
+rejects the second can hold that Ideas are mind-independent in content
+but created in being; a critic who accepts the first two but rejects
+the third can hold that Ideas are eternal, immutable, and yet sustained
+by a non-temporal divine act. Information Idealism rejects both
+positions, but it does so argument by argument, not by conflating the
+three notions.
+\end{remark}
+
+\begin{remark}
+A \emph{judgment} about an Idea may be false; the Idea itself is
+neither true nor false. To say that a judgment is ``false for a
+human'' is to predicate falsity of the judgment, not of the Idea. The
+Idea's ontological status is unaffected by any human marker.
+\end{remark}
+
+\begin{remark}
+Domain-absolute independence is an ontological claim, not an
+epistemological one. How a finite mind can \emph{grasp} a
+domain-absolutely independent Idea is a separate question, addressed
+in \S\ref{sec:access}.
+\end{remark}
+
+\section{How Neutral Ideas Make Marking Possible}
+
+A natural objection: if Ideas are wholly neutral and wholly
+independent, why should a cognitive agent mark \emph{this} Idea as true
+or good rather than any other? If the marker is wholly arbitrary, the
+position loses explanatory power.
+
+\subsection{Adequacy as a Structural Relation}\label{sec:access}
+
+The marker is not arbitrary, because the relation between agent and
+Idea is itself structured. When an agent's representation preserves
+the partition of the Idea (Definition~\ref{def:identity}), the agent
+is in a relation of \emph{adequacy} to it --- precisely the relation
+of homomorphism described there. When the representation fails to
+preserve the partition, the relation is one of \emph{inadequacy}. The
+marker ``true'' is applied to the first relation, ``false'' to the
+second. The marker is thus grounded in a structural fact about the
+relation, not in a caprice of the agent.
+
+The Idea contributes to this relation without itself bearing the
+marker. Just as a key contributes to the act of opening a lock without
+itself being ``open'' or ``closed'', an Idea contributes to the
+adequacy or inadequacy of a cognitive relation without itself being
+``true'' or ``false''. The axiological predicate attaches to the
+relation, not to the relatum.
+
+\subsection{A Theory of Misrepresentation}\label{sec:misrep}
+
+The account so far explains how adequacy is possible, but not how
+error is. Definition~\ref{def:identity} supplies the missing piece: a
+representation misrepresents $\Pi$ when it identifies states that
+$\Pi$ distinguishes. Error is thus not a mysterious failure of contact
+with an Idea, nor a privation of being; it is a determinate structural
+fact about a representation --- namely, failure of injectivity on
+blocks. Three consequences follow.
+
+\begin{enumerate}[label=(\alph*),nosep]
+  \item \emph{Error is possible without the Idea being ``false''.} The
+        Idea remains neutral; the falsity belongs to the relation.
+  \item \emph{Error is detectable in principle.} Because the Idea's
+        partition is fixed independently of any representation, a
+        representation can be compared with it along the dimensions
+        the admissible transformations make available. This is what
+        ``checking'' means.
+  \item \emph{Error is not total.} A coarsening representation
+        preserves some distinctions while losing others; a
+        misrepresentation preserves the partition on some region of
+        $S$. Global misrepresentation is the degenerate case, not the
+        norm.
+\end{enumerate}
+
+\subsection{Good and Evil as Markers of Agency}\label{sec:good}
+
+The same analysis applies, \emph{mutatis mutandis}, to good and evil.
+Let $A$ be an agent, and let $S_A$ be the state-space of the
+conditions of $A$'s agency. The \emph{conditions of agency} are the
+structural preconditions under which $A$ can form intentions,
+deliberate, and execute actions: roughly, the capacity to represent
+alternatives, to select among them on the basis of reasons, and to
+translate selection into behaviour. The admissible transformations of
+$S_A$ are those that preserve these conditions --- for instance,
+transformations that do not destroy the agent's ability to form and
+execute intentions. A structure $\Pi_A$ on $S_A$ is an Idea in the
+relevant sense when it is invariant under these transformations.
+
+An action is marked ``good'' when it promotes the structures that
+condition $A$'s agency; it is marked ``evil'' when it obstructs them.
+The Idea remains neutral; the marker remains a human one. This is a
+\emph{constructivist} criterion: the good is not read off the Idea,
+but from the conditions of agency as such. The choice of agency as the
+anchoring notion is a normative starting point, not a deduction from
+the ontology; other starting points are possible, and the position is
+compatible with them. It is worth emphasizing that this is an
+\emph{additional} thesis, logically independent of (i)--(iii): one may
+accept the ontology of Ideas and reject the agency-anchored account of
+good and evil, substituting another anchor (e.g.\ flourishing,
+autonomy, or a contractarian procedure) without revising the ontology.
+
+\begin{example}[A worked case: permutation symmetry]\label{sec:example}
+To make the apparatus concrete, consider a domain consisting of three
+indistinguishable particles, each of which may occupy one of two
+states $\{0, 1\}$. The state-space is $S = \{0,1\}^3$, with $|S| = 8$.
+The admissible transformations are the permutations of the three
+particles: $G = S_3$, acting on $S$ by permuting coordinates.
+
+The orbits of $G$ on $S$ are:
+\begin{itemize}[nosep]
+  \item $B_0 = \{(0,0,0)\}$ --- all particles in state $0$;
+  \item $B_1 = \{(1,0,0), (0,1,0), (0,0,1)\}$ --- exactly one particle
+        in state $1$;
+  \item $B_2 = \{(1,1,0), (1,0,1), (0,1,1)\}$ --- exactly two
+        particles in state $1$;
+  \item $B_3 = \{(1,1,1)\}$ --- all particles in state $1$.
+\end{itemize}
+The partition $\Pi = \{B_0, B_1, B_2, B_3\}$ is the orbit partition;
+it is $G$-invariant by construction, and it is the \emph{only}
+$G$-invariant partition of $S$ that separates states by particle
+count. It is, in the sense of Definition~\ref{def:structure}, a
+structural information class --- the pattern of distinctions that
+survives all permutations of the particles.
+
+A representation of $\Pi$ is a map $g : S \to R$ constant on each
+$B_i$. For instance, $g(s) = $ ``number of particles in state $1$''
+is an adequate representation, with $R = \{0,1,2,3\}$. The map
+$h(s) = $ ``parity of the number of particles in state $1$'' is a
+coarsening representation, with $R = \{0,1\}$: it identifies $B_0$
+with $B_2$ and $B_1$ with $B_3$. It is not misrepresenting, because
+it does not identify states within a single block; it merely loses
+distinctions. A map $k(s)$ that assigns the same value to $(0,0,0)$
+and $(1,0,0)$ \emph{is} misrepresenting, because these lie in
+different blocks of $\Pi$.
+
+This example shows how the apparatus of
+Definitions~\ref{def:structure}--\ref{def:identity} works in a
+concrete case: invariance under a group action, orbit partition,
+adequate vs.\ coarsening vs.\ misrepresenting representations. The
+same template applies to richer domains (field automorphisms for
+mathematical structures, gauge transformations for physical ones,
+agency-preserving transformations for practical ones), with the
+appropriate groupoid in place of $S_3$.
+\end{example}
+
+\section{Objections and Replies}
+
+\begin{objection}[The Epistemic Access Problem]
+If Ideas are domain-absolutely independent of all minds, how can any
+mind \emph{identify} a particular Idea? An entity that is wholly
+independent of every cognitive relation threatens to become a Kantian
+thing-in-itself: something whose existence is asserted but whose
+content is forever inaccessible. On such a view, the
+information-theoretic Idea would be epistemically empty.
+\end{objection}
+
+\noindent
+\emph{Reply.} The objection conflates \emph{ontological independence}
+with \emph{epistemic inaccessibility}. Independence is a claim about
+what fixes the Idea's identity and existence; it is not a claim about
+what a mind can come to know. A structure can be fully determinate in
+itself --- its partition fixed independently of any grasp --- and yet
+be \emph{available} to a mind whose representations come to preserve
+that partition. On this view, knowledge of an Idea is not a partial
+participation in the Idea, nor a construction of it, but a relation of
+structural adequacy between a representation and an independent
+structure. Access is thus not mysterious: it is the ordinary fact that
+a finite pattern can come to mirror an independent pattern. What is
+rejected is only the further Platonic claim that the mind must be
+\emph{akin} to the Idea, or that the Idea must somehow \emph{contain}
+its own knowability.
+
+The theory of misrepresentation in \S\ref{sec:misrep} completes the
+reply. A critic who worries that ``structural adequacy'' is vacuous
+because any representation can be gerrymandered to fit must reckon
+with the fact that adequacy is checked along the admissible
+transformations of the domain, not along arbitrary re-descriptions.
+The transformations are not chosen by the knower; they are the
+domain's own.
+
+\begin{objection}[The Normativity Problem]
+If Ideas are axiologically neutral, what grounds the \emph{normative
+force} of the markers ``true'' and ``good''? A marker grounded only in
+a structural fact about adequacy seems to be a description, not a
+norm. Yet we treat ``true'' and ``good'' as \emph{claims} on us, not
+as mere reports of correspondence.
+\end{objection}
+
+\noindent
+\emph{Reply.} The normative force belongs to the \emph{act of
+marking}, not to the marker considered in isolation. To mark a
+representation as ``true'' is to undertake a pragmatic commitment
+(Definition~\ref{def:marking}) to its adequacy: to revise it if
+adequacy fails, to rely on it in inference, to treat it as a
+constraint on further representation. To mark an action as ``good'' is
+to undertake a pragmatic commitment to its promotion of the conditions
+of agency. These commitments are not derived from the Idea, nor from
+the marker alone. They are \emph{posited} as constitutive of what it
+is to engage rationally with a structured relation, in the tradition
+of Sellars~\cite{Sellars1956} and Brandom~\cite{Brandom1994}.
+
+This is why Information Idealism can accept a Humean fact/value
+distinction without collapsing into emotivism. The \emph{content} of
+the marker is structural: it records a fact about the relation. The
+\emph{force} of the marker is practical: it is the agent's undertaking.
+The Idea supplies the structure; the agent supplies the commitment.
+The commitment is not arbitrary, because an agent who refuses it
+ceases to engage rationally with the relation --- ceases, in the
+limit, to be an agent in the relevant sense. But the necessity here is
+\emph{pragmatic}, not \emph{deductive}: it is the necessity of a
+practice, not of a proposition. The position is therefore not
+\emph{metaethically} neutral: it is a constructivism about normative
+force. This is stated explicitly and not disguised as a consequence of
+axiological neutrality at the level of Ideas. And, as noted in
+\S\ref{sec:good}, this constructivism is logically independent of the
+three ontological theses.
+
+\begin{objection}[The Triviality Problem]
+If every determinate structure is an Idea, then the position
+multiplies Ideas beyond necessity: the structure of a particular heap
+of sand, the structure of a passing cloud, the structure of a random
+number sequence --- all become eternal, immutable, mind-independent
+entities. This seems ontologically extravagant.
+\end{objection}
+
+\noindent
+\emph{Reply.} The charge of extravagance presupposes that the
+existence of a structure must be \emph{postulated} case by case. But
+on the information-idealist view, structures are not postulated; they
+are the objective partitions that any possible state-space admits.
+That a heap of sand has a determinate structure is not an additional
+ontological commitment; it is a consequence of the fact that the heap
+occupies a determinate position in the space of possible
+configurations. What is distinctive about \emph{Ideas}, in the strict
+sense, is not that they are structures, but that they are structures
+of a certain kind: those whose partitions are invariant under the
+admissible transformations of their domain, and which are in addition
+eternal, immutable, and aseitic. The ontology of structures is broad;
+the ontology of \emph{Ideas} is narrow. The three theses apply to
+Ideas so restricted, and the objection loses its force.
+
+\begin{remark}[The restriction, made categorical]
+\label{rem:categorical}
+The restriction just invoked can be stated in a categorical idiom that
+answers the demands of mathematically trained readers. Let
+$\mathbf{S}$ be a \emph{groupoid} whose objects are the states of a
+domain and whose morphisms are the admissible transformations
+(Definition~\ref{def:admissible}). A \emph{structure} on
+$\mathbf{S}$ is a functor $F : \mathbf{S} \to \mathbf{Set}$ that is
+constant on isomorphism classes of objects --- i.e.\ $F(s) = F(s')$
+whenever there is a morphism $s \to s'$ in $\mathbf{S}$. Such a
+functor is precisely a partition of $\mathrm{Ob}(\mathbf{S})$
+invariant under the morphisms of $\mathbf{S}$: the blocks are the
+fibres $F^{-1}(x)$ for $x \in \mathrm{im}(F)$.
+
+A \emph{representation} of a structure $F$ is a natural transformation
+$\eta : F \Rightarrow G$ into another such functor $G$. The
+representation is \emph{adequate} when $\eta$ is injective on each
+fibre of $F$ (i.e.\ $\eta_s$ is injective for every object $s$), and
+\emph{coarsening} when it is not. It is \emph{misrepresenting} when
+there are objects $s, s'$ in distinct fibres of $F$ with
+$\eta_s(F(s)) = \eta_{s'}(F(s'))$. This is the functorial form of
+Definition~\ref{def:identity}.
+
+A structure $F$ is an \emph{Idea} when, in addition to being a
+structure in this sense, it is eternal, immutable, and aseitic. The
+categorical formulation has three advantages over the group-theoretic
+one. First, it accommodates partial symmetries (groupoids, not
+groups). Second, it makes the notion of \emph{representation}
+functorial, and adequacy a condition on natural transformations.
+Third, it makes the \emph{domain-relativity} of objectivity precise
+without making it mind-relative: different domains are different
+groupoids, and the admissible transformations are the morphisms of the
+relevant groupoid, not the choices of an observer. For the categorical
+background, see Mac Lane~\cite{MacLane1998}; for the groupoid
+formulation of symmetry in physics, see
+Weinstein~\cite{Weinstein1996}.
+\end{remark}
+
+\section{Comparison with Classical Platonism}
+
+The three theses can be read as a systematic revision of Plato's
+positions. The table below summarizes the contrasts.
+
+\begin{center}
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{p{3.2cm} p{4.6cm} p{5.6cm}}
+\toprule
+\textbf{Aspect} & \textbf{Plato} & \textbf{Information Idealism} \\
+\midrule
+Nature of eidos & Living, intelligible substance & Information (structural determination) \\
+Axiology & Good is the summit; evil is privation & No axiological predicate applies to Ideas; markers belong to relations \\
+Truth / falsity & Ideas are truly being (\emph{ont\=os on}); falsity is a defect of cognition & Ideas are neutral; truth/falsity belong to judgments, grounded in structural adequacy; error is failure of injectivity on blocks \\
+Independence & Ontologically independent, epistemically tied to the soul & Domain-absolutely independent: objective, eternal, immutable, aseitic \\
+Access & Recollection; the soul is akin to the Ideas & Open: causal contact, structural isomorphism, or rational insight; adequacy is functorial \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section{Comparison with Structural Realism}
+
+Information Idealism is closest to \emph{structural realism} in the
+philosophy of science and \emph{structuralism} in the philosophy of
+mathematics. The comparison is worth making explicit, because it
+locates the position's originality precisely.
+
+Structural realists (Worrall~\cite{Worrall1989},
+Ladyman~\cite{Ladyman1998}, French~\cite{French2014}) hold that what
+is preserved across theory-change is structure, not intrinsic nature;
+what exists are structures and the relations they articulate.
+Mathematical structuralists (Shapiro~\cite{Shapiro1997},
+Resnik~\cite{Resnik1997}, Hellman~\cite{Hellman1989}) hold that
+mathematical objects are positions in structures, not independently
+existing entities. Both positions are mind-independent in their
+ontological commitments.
+
+Information Idealism agrees with both on the primacy of structure and
+on mind-independence, but differs on three points.
+
+\begin{enumerate}[label=(\alph*),nosep]
+  \item \emph{Scope.} Structural realism is a thesis about the
+        \emph{physical} world; structuralism is a thesis about
+        \emph{mathematical} objects. Information Idealism is a thesis
+        about the ontology of eidos as such, and so ranges over
+        physical, mathematical, and practical structures alike. It is
+        a generalization of both, not a competitor.
+  \item \emph{Axiological neutrality.} Structural realists and
+        structuralists are typically silent on the relation between
+        structure and value. Information Idealism makes axiological
+        neutrality a central thesis, and supplies an account of
+        markers (\S4) that neither tradition offers.
+  \item \emph{The modal triad.} Structural realists and
+        structuralists typically assert mind-independence without
+        distinguishing objectivity, eternity, immutability, and
+        aseity. Information Idealism separates them
+        (Definition~\ref{def:modal}) and argues for each separately
+        (Claim 3.3). This is what makes the position
+        \emph{domain-absolutely} independent in a sense stronger than
+        either tradition usually claims, while stopping short of the
+        stronger claim of independence from every possible ground.
+\end{enumerate}
+
+The originality of Information Idealism thus lies not in the primacy
+of structure --- that is shared with structural realism and
+structuralism --- but in the \emph{combination} of structural ontology
+with explicit axiological neutrality and a differentiated account of
+domain-absolute independence. Each ingredient is traditional; the
+conjunction is not.
+
+\section{Limitations and Open Problems}\label{sec:limitations}
+
+The position is programmatic, and it is worth stating the open
+problems explicitly, both to forestall the charge of overclaiming and
+to indicate directions for further work.
+
+\begin{enumerate}[label=(\arabic*),nosep]
+  \item \emph{The grounding of the domain.} The central open problem
+        is the one identified in Remark~\ref{rem:domain-not-mind}:
+        what fixes a domain's constitutive transformations, and why
+        is this fixing not itself a form of mind-dependence? The
+        reply offered --- that the transformations are discovered,
+        not invented --- is substantive but not fully argued. A
+        fully worked-out account would need to say, for each kind of
+        domain (physical, mathematical, practical), what it is for a
+        transformation to be constitutive, and how we can be wrong
+        about it. This is the most important direction for further
+        work.
+  \item \emph{The identification of Ideas across domains.} If two
+        domains have different constitutive transformations, can they
+        share an Idea? The position as stated leaves this open. A
+        natural answer is that cross-domain identity is
+        \emph{functorial}: an Idea is shared when there is a functor
+        between the groupoids that preserves the relevant partitions.
+        But this answer needs to be made precise and defended.
+  \item \emph{The completeness of the modal triad.} The triad
+        (eternal, immutable, aseitic) is offered as a
+        \emph{differentiated} account of independence. It is not
+        claimed to be exhaustive. Other modal notions --- necessity,
+        essentiality, fundamentality --- might also be relevant, and
+        their relation to the triad is not spelled out.
+  \item \emph{The status of the constructivism.} The constructivist
+        account of normative force is logically independent of the
+        ontology, but it is not for that reason optional: if it
+        fails, the position loses its account of the normativity of
+        ``true'' and ``good''. The account is stated in the tradition
+        of Sellars and Brandom, but the details --- in particular, the
+        account of the pragmatic commitments involved in marking ---
+        are left schematic.
+  \item \emph{The epistemology of adequacy.} The account of
+        misrepresentation as failure of injectivity is formal and
+        clear, but the account of how agents \emph{come to know}
+        whether their representations are adequate is not. The
+        position says that adequacy is checked along the admissible
+        transformations of the domain, but it does not say how the
+        agent identifies the relevant transformations in practice.
+        This is a problem for the epistemology, not the ontology, but
+        it is a problem.
+\end{enumerate}
+
+\section{Conclusion}
+
+Information Idealism offers a coherent and modern reformulation of
+Platonism. It preserves the realist core of Plato's theory while
+discarding its vitalistic and moralistic overtones. An Idea is
+information --- objective structural determination; it is neutral in
+the axiological sense; it is domain-absolutely independent, in the
+differentiated sense of objective, eternal, immutable, and aseitic.
+Truth, falsehood, good, and evil are not properties of Ideas but
+markers of the human relation to them. The formal apparatus ---
+partitions, admissible transformations, functorial representations,
+misrepresentation as failure of injectivity --- is minimal but
+sufficient to state the position precisely, to answer the standard
+objections, and to locate the view in relation to classical Platonism
+and to structural realism.
+
+Information Idealism is offered as a programmatic sketch: the formal
+core is minimal, several transitions are argued heuristically, and the
+normative theory is constructivist rather than derived. Its aim is to
+state the position clearly enough to be criticized. The open problems
+of \S\ref{sec:limitations} indicate the directions in which the
+position would need to be developed to be more than a sketch.
+
+\begin{thebibliography}{99}
+
+\bibitem{Brandom1994}
+R.~Brandom.
+\newblock \emph{Making It Explicit: Reasoning, Representing, and
+Discursive Commitment}.
+\newblock Harvard University Press, 1994.
+
+\bibitem{CoverThomas2006}
+T.~M. Cover and J.~A. Thomas.
+\newblock \emph{Elements of Information Theory}.
+\newblock Wiley-Interscience, 2nd edition, 2006.
+
+\bibitem{Dummett1978}
+M.~Dummett.
+\newblock \emph{Truth and Other Enigmas}.
+\newblock Harvard University Press, 1978.
+
+\bibitem{French2014}
+S.~French.
+\newblock \emph{The Structure of the World: Metaphysics and
+Representation}.
+\newblock Oxford University Press, 2014.
+
+\bibitem{Hellman1989}
+G.~Hellman.
+\newblock \emph{Mathematics without Numbers: Towards a Modal-Structural
+Interpretation}.
+\newblock Clarendon Press, 1989.
+
+\bibitem{Ladyman1998}
+J.~Ladyman.
+\newblock What is structural realism?
+\newblock \emph{Studies in History and Philosophy of Science},
+29(3):409--424, 1998.
+
+\bibitem{MacLane1998}
+S.~Mac Lane.
+\newblock \emph{Categories for the Working Mathematician}.
+\newblock Springer, 2nd edition, 1998.
+
+\bibitem{Resnik1997}
+M.~D. Resnik.
+\newblock \emph{Mathematics as a Science of Patterns}.
+\newblock Clarendon Press, 1997.
+
+\bibitem{Sellars1956}
+W.~Sellars.
+\newblock Empiricism and the philosophy of mind.
+\newblock In H.~Feigl and M.~Scriven, editors, \emph{Minnesota Studies
+in the Philosophy of Science}, volume~1, pages 253--329. University of
+Minnesota Press, 1956.
+
+\bibitem{Shapiro1997}
+S.~Shapiro.
+\newblock \emph{Philosophy of Mathematics: Structure and Ontology}.
+\newblock Oxford University Press, 1997.
+
+\bibitem{Weinstein1996}
+A.~Weinstein.
+\newblock Groupoids: unifying internal and external symmetry.
+\newblock \emph{Notices of the American Mathematical Society},
+43(7):744--752, 1996.
+
+\bibitem{Worrall1989}
+J.~Worrall.
+\newblock Structural realism: the best of both worlds?
+\newblock \emph{Dialectica}, 43(1--2):99--124, 1989.
+
+\end{thebibliography}
+
+\end{document}
